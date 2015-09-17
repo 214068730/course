@@ -1,8 +1,6 @@
 package course.api.mocktests;
 
 import course.api.CrudPageMockExample;
-import org.junit.Before;
-import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -18,14 +16,14 @@ public class CrudMockPageTest {
     final String BASE_URL = "http://localhost:8080/";
     private MockMvc mockMvc;
 
-    @Before
+//    @Before
     public void setup() {
 
         mockMvc = MockMvcBuilders.standaloneSetup(new CrudPageMockExample())
                 .build();
     }
 
-    @Test
+//    @Test
     public void read() throws Exception {
 
         mockMvc
@@ -35,7 +33,7 @@ public class CrudMockPageTest {
                 .andExpect(content().string("{\"name\":\"john\",\"age\":43}"));
     }
 
-    @Test
+//    @Test
     public void readAll() throws Exception {
 
         mockMvc
@@ -48,7 +46,7 @@ public class CrudMockPageTest {
                                         + "{\"name\":\"peter\",\"age\":40}]}"));
     }
 
-    @Test
+//    @Test
     public void create() throws Exception {
 
         mockMvc
@@ -62,7 +60,7 @@ public class CrudMockPageTest {
                         content().string("{\"name\":\"mary\",\"age\":30}"));
     }
 
-    @Test
+//    @Test
     public void update() throws Exception {
 
         mockMvc
@@ -72,7 +70,7 @@ public class CrudMockPageTest {
                 status().isOk());
     }
 
-    @Test
+//    @Test
     public void remove() throws Exception {
 
         mockMvc

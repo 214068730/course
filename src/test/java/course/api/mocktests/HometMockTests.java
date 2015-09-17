@@ -1,16 +1,7 @@
 package course.api.mocktests;
 
-import course.App;
 import course.api.HomePage;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockServletContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -23,14 +14,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by hashcode on 2015/08/22.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = App.class)
-@ContextConfiguration(classes = MockServletContext.class)
-@WebAppConfiguration
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringApplicationConfiguration(classes = App.class)
+//@ContextConfiguration(classes = MockServletContext.class)
+//@WebAppConfiguration
 public class HometMockTests{
     final String BASE_URL = "http://localhost:8080/";
     private MockMvc mockMvc;
-    @Before
+//    @Before
     public void setUp() throws Exception {
         mockMvc = MockMvcBuilders.standaloneSetup(
                 new HomePage())
@@ -38,7 +29,7 @@ public class HometMockTests{
 
     }
 
-    @Test
+//    @Test
     public void read() throws Exception {
 
         mockMvc

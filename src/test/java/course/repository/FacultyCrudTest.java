@@ -14,7 +14,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ public class FacultyCrudTest extends AbstractTestNGSpringContextTests{
 
     }
 
-    @Test
+//    @Test
     public void create() throws Exception {
 
         ContactAddress deptaddress = ContactFactory
@@ -70,7 +69,7 @@ public class FacultyCrudTest extends AbstractTestNGSpringContextTests{
         Assert.assertNotNull(faculty.getId());
     }
 
-    @Test(dependsOnMethods = "create")
+//    @Test(dependsOnMethods = "create")
     public void read() throws Exception {
         Faculty faculty = repository.findOne(id);
         Assert.assertNotNull(faculty.getId());
@@ -79,7 +78,7 @@ public class FacultyCrudTest extends AbstractTestNGSpringContextTests{
 
     }
 
-    @Test(dependsOnMethods = "read")
+//    @Test(dependsOnMethods = "read")
     public void update() throws Exception {
 
     }
