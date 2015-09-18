@@ -357,7 +357,7 @@ $ git push
 
 ```
 
-That should start deployment of your application to Openshift. Your last lines should looklike so
+That should start deployment of your application to OpenShift. Your last lines should look like so
 
 ```
 remote: 2015-09-17 15:32:07.817  INFO 108597 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
