@@ -13,10 +13,10 @@ Course Sample Code for teaching TP2
 
 This the instruction to deploy an application on Openshift. Am deploying the course application that is on my machine in the folder
 
-``
+````
 /home/hashcode/IdeaProjects/course/
 
-``
+````
 
 
 To Deploy this application to OpenShift, you need the following in place
@@ -46,35 +46,35 @@ and this is how you install RHC tools
 
 First install Ruby Gems and Git to your OS if it is not installed
 
-``
+```
 $ sudo apt-get install ruby-full rubygems-integration git-core
 
-``
+```
 
 Test your Ruby Installations and it Should echo the string "Ruby is Installed Successfully" back
 
-``
+```
 $ ruby -e 'puts "Ruby is Installed Successfully"'
 
-``
+```
 
 Next up Install the RHC clients
 
-``
+```
 sudo gem install rhc
 
-``
+```
 
 Run the setup with command below
 
-``
+```
 $ rhc setup
 
-``
+```
 
 Here is the output from my console
 
-``
+```
 
 $rhc setup
 OpenShift Client Tools (RHC) Setup Wizard
@@ -134,7 +134,7 @@ Checking for applications ... found 1
 
 Your client tools are now configured.
 
-``
+```
 
 There are instructions on how to install client on windows on Openshift developer site.
 
@@ -143,25 +143,25 @@ There are instructions on how to install client on windows on Openshift develope
 In the root of your application, create a .openshift/action_hooks folders. Please not that these are hidden folder and created on a linux box
 using the command below
 
-``
+```
 mkdir -p /home/hashcode/IdeaProjects/course/.openshift/action_hooks
 
-``
+```
 
 Next up create three files deploy, start and stop inside the action_hooks folder
 
-``
+```
 touch /home/hashcode/IdeaProjects/course/.openshift/action_hooks/deploy
 touch /home/hashcode/IdeaProjects/course/.openshift/action_hooks/start
 touch /home/hashcode/IdeaProjects/course/.openshift/action_hooks/stop
 
-``
+```
 
 Here are the contents of each file
 
 deploy
 
-``
+```
 #!/bin/bash
 
 set -x
@@ -193,22 +193,22 @@ export MAVEN_OPTS="-Xms384m -Xmx412m"
 
 mvn -s settings.xml clean install
 
-``
+```
 
 start
 
-``
+```
 
 #!/bin/bash
 cd $OPENSHIFT_REPO_DIR
 nohup java -Xms384m -Xmx412m -jar target/*.jar --server.port=${OPENSHIFT_DIY_PORT} --server.address=${OPENSHIFT_DIY_IP} &
 
-``
+```
 
 
 stop
 
-``
+```
 #!/bin/bash
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
@@ -222,27 +222,27 @@ else
     kill $PID
 fi
 
-``
+```
 
 Next create a settings.xml file in the root of your application
 
-``
+```
 touch /home/hashcode/IdeaProjects/course/settings.xml
 
-``
+```
 
 And here is the contents for settings.xml
 
-``
+```
 <settings>
     <localRepository>${OPENSHIFT_DATA_DIR}/m2/repository</localRepository>
 </settings>
 
-``
+```
 
 Also update your applications.properties to look like
 
-``
+```
 
 spring.datasource.url: jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}
 spring.datasource.username: ${OPENSHIFT_MYSQL_DB_USERNAME}
@@ -263,7 +263,7 @@ spring.jpa.hibernate.ddl-auto = update
 spring.jpa.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 spring.jpa.hibernate.naming_strategy = org.hibernate.cfg.ImprovedNamingStrategy
 
-``
+```
 
 With all these changes made to your application, push it to your repository either using command line or your IDE
 
@@ -272,16 +272,16 @@ With all these changes made to your application, push it to your repository eith
 
 I created a folder called openshift on my machine where I will host Openshif apps
 
-``
+```
 $ cd
 $ mkdir openshift
 $ cd openshift
 $ rhc app create course diy-0.1
-``
+```
 
 I got the following output
 
-``
+```
 Application Options
 -------------------
 Domain:     kabaso
@@ -306,19 +306,19 @@ Your application 'course' is now available.
 
 Run 'rhc show-app course' for more details about your app.
 
-``
+```
 
 
 Next up is adding the Database cartridge
 
-``
+```
 rhc cartridge add mysql-5.5 -a course
 
-``
+```
 
 And got this output
 
-``
+```
 
 Adding mysql-5.5 to application 'course' ... done
 
@@ -341,11 +341,11 @@ Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
 You can manage your new MySQL database by also embedding phpmyadmin.
 The phpmyadmin username and password will be the same as the MySQL credentials above.
 
-``
+```
 
 Next is move into the course directory to get the application from my git repository and push it to Openshift
 
-``
+```
 $ cd course
 $ git rm -rf .openshift README.md diy misc
 $ git commit -am "Removed template application source code"
@@ -355,11 +355,11 @@ $ chmod a+x .openshift/action_hooks/*
 $ git commit -am "Make Hooks Executable"
 $ git push
 
-``
+```
 
 That should start deployment of your application to Openshift. Your last lines should looklike so
 
-``
+```
 remote: 2015-09-17 15:32:07.817  INFO 108597 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 remote: 2015-09-17 15:32:07.820  INFO 108597 --- [           main] course.App                               : Started App in 29.831 seconds (JVM running for 31.629)
 remote: -------------------------
@@ -369,40 +369,40 @@ remote: Deployment completed with status: success
 To ssh://55fafe030c1e666edd000085@course-kabaso.rhcloud.com/~/git/course.git/
    fa288f1..025669d  master -> master
 
-``
+```
 
 ## Issues you may encounter
 
 I did this at home where I have no CPUT firewall nonsense, so if you are on campus it could get out of the way.
 Try this in your session to get round it
 
-``
+```
   export HTTPS_PROXY=http://username:passwword@10.18.8.9:8080
   export HTTP_PROXY=http://username:passwword@10.18.8.9:8080
 
-  ``
+  ```
   if after this you get ssh errors, go to CTS  or lab technicainas and ask them to open port ssh on port 22
 
   Other error could be
 
-  ``
+  ```
   fatal: The remote end hung up unexpectedly
   error: error in sideband demultiplexer
-  ``
+  ```
 
   log into your account on command line and create a config file as below
 
-  ``
+  ```
   vim ~/.openshift_ssh/config
 
-  ``
+  ```
 
   and paste these values into that file
 
-  ``
+  ```
   ServerAliveInterval 60
   ServerAliveCountMax 15
-  ``
+  ```
 
 
 ## Finally
