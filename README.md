@@ -11,7 +11,7 @@ Course Sample Code for teaching TP2
 
 # Deploying the Application to OpenShift #
 
-This the instruction to deploy an application on Openshift. Am deploying the course application that is on my machine in the folder
+This is the instructions to deploy an application to  Openshift. Am deploying the course application that is on my machine in the folder
 
 ````
 /home/hashcode/IdeaProjects/course/
