@@ -9,7 +9,7 @@ Course Sample Code for teaching TP2
 
 ### Domain Model ###
 
-## Deploying the Application to OpenShift ##
+# Deploying the Application to OpenShift #
 
 This the instruction to deploy an application on Openshift. Am deploying the course application that is on my machine in the folder
 
@@ -27,19 +27,19 @@ To Deploy this application to OpenShift, you need the following in place
 4. Add OpenShift Hooks to your application
 5. Create an application for Deployment
 
-## Make sure your application works
+## Make sure your application works ##
 
 Your application should work on your local machine as expected. ALL tests must pass.
 If any of your Test fail, the application will not deploy. If you have test that can't run elsewhere
 other than on your machine, just disable them. I have done so on some tests in this application.
 
-## Open An account with OpenShift
+## Open An account with OpenShift ##
 
 This should be the easy part, head to openshift.com and create an account. Once you have created the account, create a domain.
 In my case my domain is kabaso so all my apps will be on appname-kabaso.rhcloud.com
 
 
-# Install OpenShift Client tools RHC  Tools
+## Install OpenShift Client tools RHC  Tools
 
 Based on your OS, find out how to install client tools for your Operating Systems. I use Linux Mint based on Ubuntu 14.04
 and this is how you install RHC tools
