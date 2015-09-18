@@ -371,6 +371,17 @@ To ssh://55fafe030c1e666edd000085@course-kabaso.rhcloud.com/~/git/course.git/
 
 ```
 
+To update your applications, something you will have to do anyway, you don't need to do the whole setup again, unless you work on a new machine.
+
+All you have to do is update your application in your IDE and push it to GitHub and just run these commands to redeploy your application
+
+```
+$ git pull -s recursive -X theirs upstream master
+$ chmod a+x .openshift/action_hooks/*
+$ git commit -am "Make Hooks Executable"
+$ git push
+```
+
 ## Issues you may encounter
 
 I did this at home where I have no CPUT firewall nonsense, so if you are on campus it could get out of the way.
